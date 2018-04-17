@@ -1,0 +1,15 @@
+{
+  "name": "web-server-express",
+  "version": "1.0.0",
+  "description": "web server using express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "aunomy",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.8",
+    "express": "^4.16.3"
+  }
+}
