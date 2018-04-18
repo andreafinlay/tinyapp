@@ -5,9 +5,13 @@
 </head>
 <body>
   <header>
-    <% include ../partials/header %>
+    <% include partials/_header %>
   </header>
-  <%= //express_server.js %>
-  <%= %>
+  <ul>
+    <% for (var objKey in urls) { %>
+    <li><%= objKey %> : <%= urls[objKey] %> </li>
+    <% } %>
+    <li><a href="iflscience.com" target="_blank"> future link for shortening </a></li>
+  </ul>
 </body>
 </html>
