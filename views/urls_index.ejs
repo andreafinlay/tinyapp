@@ -9,7 +9,10 @@
   </header>
   <ul>
     <% for (var objKey in urls) { %>
-    <li><%= objKey %> : <%= urls[objKey] %> </li>
+    <li><%= objKey %> : <%= urls[objKey] %></li>
+      <form method="POST" action="/urls/<%= objKey %>/delete">
+        <button>Delet this</button>
+      </form>
     <% } %>
     <li><a href="iflscience.com" target="_blank"> future link for shortening </a></li>
   </ul>
