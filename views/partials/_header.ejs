@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>TinyApp</title>
-</head>
-<body>
-  <ul>
-    <li><a href="/urls"> database </a> </li>
-    <li><a href="/urls/new"> new link </a> </li>
-  </ul>
-  <%= //express_server.js %>
-  <%= %>
-</body>
-</html>
+
+  <p> logged in as: <%= username %>
+    <form class="" action="/logout" method="post">
+      <button type="submit"> logout </button>
+    </form>
+  </p>
+
+  <form action="/login" method="POST">
+    <p>login: </p>
+    <input type="text" name="username" placeholder="username">
+    <input type="submit" value="submit">
+  </form>
+
+  <a href="/urls"> database / </a>
+  <a href="/urls/new">/ new link </a>
