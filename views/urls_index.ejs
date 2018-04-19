@@ -11,9 +11,9 @@
     <% for (var objKey in urls) { %>
     <li><%= objKey %> : <%= urls[objKey] %></li>
       <form method="POST" action="/urls/<%= objKey %>/delete">
-        <button>Delet this</button>
+        <button> delete </button>
       </form>
-      <button><a href="/urls/<%= objKey %>"> Edit </a></button>
+      <button><a href="/urls/<%= objKey %>"> edit </a></button>
     <% } %>
   </ul>
 </body>

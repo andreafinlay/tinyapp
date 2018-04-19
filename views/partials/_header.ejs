@@ -1,17 +1,7 @@
-  <p> logged in as: <%= username %>
-
-
-  <% if(username) { %>
-    <form class="" action="/logout" method="post">
-      <button type="submit"> logout </button>
-    </form>
-    <% } else { %>
-  <form action="/login" method="POST">
-    <p>login: </p>
-    <input type="text" name="username" placeholder="username">
-    <input type="submit" value="submit">
-  </form>
-    <% } %>
-
-  <a href="/urls"> database / </a>
-  <a href="/urls/new">/ new link </a>
+<a href="/login"> <button type="submit"> log in </button> </a>
+<a href="/register"> <button type="submit"> register </button> </a>
+<a href="/urls"> <button type="submit"> database </button> </a>
+<a href="/urls/new"> <button type="submit"> new link </button> </a>
+<form action="/logout" method="post">
+  <button type="submit"> logout </button>
+</form>
