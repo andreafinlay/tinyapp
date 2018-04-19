@@ -73,7 +73,6 @@ app.post("/register", (req, res) => {
         res.redirect("/urls");
         }
     }
-    console.log(users);
 });
 
 app.get("/login", (req, res) => {
