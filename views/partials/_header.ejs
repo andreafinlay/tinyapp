@@ -1,15 +1,17 @@
-
   <p> logged in as: <%= username %>
+
+
+  <% if(username) { %>
     <form class="" action="/logout" method="post">
       <button type="submit"> logout </button>
     </form>
-  </p>
-
+    <% } else { %>
   <form action="/login" method="POST">
     <p>login: </p>
     <input type="text" name="username" placeholder="username">
     <input type="submit" value="submit">
   </form>
+    <% } %>
 
   <a href="/urls"> database / </a>
   <a href="/urls/new">/ new link </a>
