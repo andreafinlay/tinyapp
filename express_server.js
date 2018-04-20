@@ -22,10 +22,6 @@ function findUser(email) {
  return false;
 };
 
-app.get("/", (req, res) => {
-  res.end("Hello!");
-});
-
 const urlDatabase = {
   "b2xVn2": "http://www.lighthouselabs.ca",
   "9sm5xK": "http://www.google.com"
@@ -43,6 +39,10 @@ const users = {
     password: "dishwasher-funk"
   }
 }
+
+app.get("/", (req, res) => {
+  res.end("homepage");
+});
 
 app.get("/register", (req, res) => {
   res.render("register");
@@ -99,6 +99,15 @@ app.get("/urls", (req, res) => {
 });
 
 app.get("/urls/new", (req, res) => {
+  let currentUser = req.cookies.user_id;
+  if (!currentUser) {
+    res.redirect("/login");
+  } else {
+    res.render("urls_new");
+  }
+});
+
+app.get("/urls/new", (req, res) => {
   let userID = req.cookies["user_id"];
   let templateVars = { user: users[userID] };
   res.render("urls_new", templateVars);
@@ -106,7 +115,8 @@ app.get("/urls/new", (req, res) => {
 
 app.post("/urls", (req, res) => {
   var randomString = generateRandomString();
-  urlDatabase[randomString] = req.body.longURL;
+  urlDatabase[randomString] = { longURL: req.body.longURL, userID: req.cookies.user_id };
+  console.log(urlDatabase);
   res.redirect("/urls/" + randomString);
 });
 
