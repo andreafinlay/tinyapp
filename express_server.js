@@ -54,8 +54,6 @@ function urlsForUser(id) {
   return privateURLs;
 };
 
-// console.log("function outside endpoint: ", urlsForUser('userRandomID'));
-
 app.get("/", (req, res) => {
   res.end("homepage");
 });
@@ -139,7 +137,6 @@ app.post("/urls", (req, res) => {
   let userID =  req.cookies.user_id;
   var shortURL = generateRandomString();
   urlDatabase[shortURL] = { longURL: longURL, createdBy: userID };
-  // console.log("urlDatabase: ", urlDatabase);
   res.redirect("/urls/" + shortURL);
 });
 
@@ -171,7 +168,7 @@ app.get("/urls/:id", (req, res) => {
 app.post("/urls/:id", (req, res) => {
   const shortURL = req.params.id;
   let currentUser = req.cookies["user_id"];
-  let authorizedUser = urlDatabase[shortURL].userID
+  let authorizedUser = urlDatabase[shortURL].userID;
   if (currentUser !== authorizedUser) {
     res.status(403).send("you do not have permission to modify this url. please log into your own session to edit links.")
   } else {
