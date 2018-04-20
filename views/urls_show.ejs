@@ -10,7 +10,7 @@
   <h1>Short URL:  <%= shortURL %> </h1>
     <p>Go: <a href="http://localhost:8080/u/<%= shortURL %>">http://localhost:8080/u/<%= shortURL %></a></p>
     <form action="/urls/<%= shortURL %>" method="POST">
-      <input id="longURL" type="text" name="longURL" value=" <%= longURL %>">
+      <input id="longURL" type="text" name="longURL" value=" <%= longURL.longURL %>">
       <input type="submit" value="Update">
     </form>
   <%= //express_server.js %>

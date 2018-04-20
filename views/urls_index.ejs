@@ -8,8 +8,8 @@
     <% include partials/_header %>
   </header>
   <ul>
-    <% for (var objKey in urls) { %>
-    <li><%= objKey %> : <%= urls[objKey] %></li>
+    <% for (var objKey in privateURLs) { %>
+    <li><%= objKey %> : <%= privateURLs[objKey] %></li>
       <form method="POST" action="/urls/<%= objKey %>/delete">
         <button> delete </button>
       </form>
