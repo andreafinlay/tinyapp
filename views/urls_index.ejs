@@ -7,13 +7,15 @@
   <header>
     <% include partials/_header %>
   </header>
+  <a href="/urls/new">Create A New Short Link</a>
+  <h3> Your Shortened Links: </h3>
   <ul>
     <% for (var objKey in privateURLs) { %>
-    <li><%= objKey %> : <%= privateURLs[objKey] %></li>
-      <form method="POST" action="/urls/<%= objKey %>/delete">
-        <button> delete </button>
-      </form>
-      <button><a href="/urls/<%= objKey %>"> edit </a></button>
+        <li><%= objKey %> : <%= privateURLs[objKey] %></li>
+          <form method="POST" action="/urls/<%= objKey %>/delete">
+            <button> Delete Link </button>
+          </form>
+            <button><a href="/urls/<%= objKey %>"> Edit Link </a></button>
     <% } %>
   </ul>
 </body>

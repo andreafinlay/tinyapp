@@ -1,7 +1,26 @@
-<a href="/login"> <button type="submit"> log in </button> </a>
-<a href="/register"> <button type="submit"> register </button> </a>
-<a href="/urls"> <button type="submit"> database </button> </a>
-<a href="/urls/new"> <button type="submit"> new link </button> </a>
-<form action="/logout" method="post">
-  <button type="submit"> logout </button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <head></head>
+  <body style="font-size:20px; padding:50px;">
+    <% for (let currentUser in users) { %>
+    <%    if (currentUser === user) { %>
+            <p> Hello <%= email %>! </p>
+            <form action="/logout" method="post">
+              <button type="submit"> Log Out
+              </button>
+            </form>
+      <% } %>
+    <% } %>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+<!-- <a href="/urls"> <button type="submit"> database </button> </a>
+<a href="/urls/new"> <button type="submit"> new link </button> </a> -->
