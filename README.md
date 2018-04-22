@@ -27,5 +27,5 @@ Updating an existing URL
 
 ## Getting Started
 
-- Install all dependencies (npm install)
-- Run the development web server (node express_server.js)
+- Install all dependencies (`npm install`)
+- Run the development web server (`node express_server.js`)
