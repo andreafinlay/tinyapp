@@ -39,6 +39,8 @@ function generateRandomString() {
 return Math.floor((1 + Math.random()) * 0x1000000).toString(16).substring(1);
 };
 
+
+// Retrieves user from database, returns user or false
 function findUser(email) {
  for (let userID in users) {
    if (email === users[userID].email) {
@@ -48,6 +50,7 @@ function findUser(email) {
  return false;
 };
 
+// Retrieves URL from database, returns URL or false
 function findURLInDatabase(shortURL) {
   const arrayOfShortURLs = Object.keys(urlDatabase);
   for (let i = 0; i < arrayOfShortURLs.length; i++) {
@@ -58,6 +61,7 @@ function findURLInDatabase(shortURL) {
   return false;
 };
 
+// Retrieves short URLs associated with a given user
 function urlsForUser(id) {
   const privateURLs = {};
   const arrayOfShortURLs = Object.keys(urlDatabase);
@@ -71,6 +75,14 @@ function urlsForUser(id) {
   return privateURLs;
 };
 
+/*-----------------------------------------*/
+/////////////////
+//  Home Page  //
+/////////////////
+/*-----------------------------------------*/
+
+// Renders landing page or
+// redirects to database if user is already logged in
 app.get("/", (req, res) => {
   const userID = req.session.user_id;
   if (!userID) {
@@ -80,6 +92,14 @@ app.get("/", (req, res) => {
  }
 });
 
+/*-----------------------------------------*/
+////////////////////////////
+//  Login & Registration  //
+////////////////////////////
+/*-----------------------------------------*/
+
+// Renders login page or
+// redirects to database if user is already logged in
 app.get("/login", (req, res) => {
   const userID = req.session.user_id;
   if (userID)  {
@@ -89,6 +109,8 @@ app.get("/login", (req, res) => {
   }
 });
 
+// Renders registration page or
+// redirects to database if user is already registered
 app.get("/register", (req, res) => {
   const userID = req.session.user_id;
   if (userID)  {
@@ -98,6 +120,9 @@ app.get("/register", (req, res) => {
   }
 });
 
+// Verifies that user exists, checks hashed password,
+// if request is valid, logs user in and sets an encrypoted cookie,
+// redirects to database
 app.post("/login", (req, res) => {
   const formEmail = req.body.email;
   const formPass = req.body.password;
@@ -115,6 +140,9 @@ app.post("/login", (req, res) => {
   }
 });
 
+// Verifies that user does not already exist, validates credentials,
+// if request is valid, logs user in and sets an encrypoted cookie
+// redirects to database
 app.post("/register", (req, res) => {
   const id = generateRandomString();
   const formEmail = req.body.email;
@@ -139,6 +167,14 @@ app.post("/register", (req, res) => {
     }
 });
 
+/*-----------------------------------------*/
+/////////////////////
+//  User Controls  //
+/////////////////////
+/*-----------------------------------------*/
+
+// Displays url database for an existing user, or
+// redirects to landing page
 app.get("/urls", (req, res) => {
   const userID = req.session.user_id;
   if (userID === undefined) {
@@ -155,6 +191,8 @@ app.get("/urls", (req, res) => {
   }
 });
 
+// Generates a random string which is used as the short URL,
+// redirects to update page
 app.post("/urls", (req, res) => {
   const longURL = req.body.longURL;
   const userID =  req.session.user_id;
@@ -166,9 +204,11 @@ app.post("/urls", (req, res) => {
   res.redirect("/urls/" + shortURL);
 });
 
+// Displays the short URL creation page for a specific user or
+// redirects to the landing page
 app.get("/urls/new", (req, res) => {
   const userID = req.session.user_id;
-  if (userID){
+  if (userID) {
   const templateVars = {
     users: users,
     user: users[userID].id,
@@ -180,6 +220,8 @@ app.get("/urls/new", (req, res) => {
 }
 });
 
+// Displays the short URL creation page or
+// redirects to landing page
 app.get("/urls/new", (req, res) => {
   const anyUser = req.session.user_id;
   if (!anyUser) {
@@ -189,6 +231,8 @@ app.get("/urls/new", (req, res) => {
   }
 });
 
+// Redirects the user from the short URL to the original URL or
+// returns 404 if the URL is not found
 app.get("/u/:shortURL", (req, res) => {
   const shortURL = req.params.shortURL;
   const URLFound = findURLInDatabase(shortURL);
@@ -200,6 +244,9 @@ app.get("/u/:shortURL", (req, res) => {
     }
 });
 
+// If a user is logged in and has permission to edit links,
+// render URL update page or else
+// redirect to landing page
 app.get("/urls/:id", (req, res) => {
   const shortURL = req.params.id;
   const userID = req.session.user_id;
@@ -220,6 +267,8 @@ app.get("/urls/:id", (req, res) => {
   res.render("urls_show", templateVars);
 });
 
+// If the user has permission, updates the short URL and
+// redirects to database
 app.post("/urls/:id", (req, res) => {
   const shortURL = req.params.id;
   let currentUser = req.session.user_id;
@@ -232,12 +281,15 @@ app.post("/urls/:id", (req, res) => {
   }
 });
 
+// Deletes an existing short URL in the database
 app.post("/urls/:id/delete", (req, res) => {
   let shortURL = req.params.id;
   delete urlDatabase[shortURL];
   res.redirect("/urls");
 });
 
+// Logs the current user out, clears cookies, and
+// redirects to home page (& landing page)
 app.post("/logout", (req, res) => {
   req.session = null;
   res.redirect("/urls");
