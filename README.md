@@ -1,21 +1,24 @@
-# TinyApp Project
+# TinyApp
 
-TinyApp is a full stack web application built with Node and Express.
-TinyApp allows user to convert long URLs to links containing only a few characters.
+TinyApp is a full stack web application in the vein of [bit.ly](https://bitly.com/), built with [Node](https://nodejs.org/en/) and [Express](https://expressjs.com/).
+TinyApp allows users to convert long URLs to short links, and keeps a user-specific database of shortened links.
 
 ## Final Product
 
-!["screenshot description"](#)
-!["screenshot description"](#)
+!["URL Database"](https://github.com/aunomy/tinyapp/blob/master/docs/urls-page.png?raw=true)
+!["Adding a new URL"](https://github.com/aunomy/tinyapp/blob/master/docs/new-url.png?raw=true)
+!["Updating existing URL"](https://github.com/aunomy/tinyapp/blob/master/docs/update-url.png?raw=true)
 
 ## Dependencies
 
+```
 - Node.js
 - Express
 - EJS
 - bcrypt
 - body-parser
 - cookie-session
+```
 
 ## Getting Started
 
