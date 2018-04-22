@@ -5,7 +5,7 @@ TinyApp allows users to convert long URLs to short links, and keeps a user-speci
 
 ## Final Product
 
-!["URL Database"](https://github.com/aunomy/tinyapp/blob/master/docs/urls-page.png?raw=true "URL Database")
+!["URL Database"](https://github.com/aunomy/tinyapp/blob/master/docs/urls-page.png?raw=true)
 
 !["Adding a new URL"](https://github.com/aunomy/tinyapp/blob/master/docs/new-url.png?raw=true)
 
