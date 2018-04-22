@@ -244,5 +244,5 @@ app.post("/logout", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`TinyApp listening on port ${PORT}`);
+  console.log(`TinyApp listening on port ${PORT}...`);
 });

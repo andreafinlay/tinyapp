@@ -1,26 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head></head>
-  <body style="font-size:20px; padding:50px;">
+  <body bgcolor="#FCF3FF" style="font-size:20px; padding:50px;">
     <% for (let currentUser in users) { %>
-    <%    if (currentUser === user) { %>
-            <p> Hello <%= email %>! </p>
-            <form action="/logout" method="post">
-              <button type="submit"> Log Out
-              </button>
-            </form>
+    <% if (currentUser === user) { %>
+      <p> <font face="Courier" color="#008B8B">Welcome</font><font face="Courier"> <%= email %></font></p>
+      <form action="/logout" method="post">
+        <button type="submit"> Log Out
+        </button>
+      </form>
+      <hr color="#000000" size="3px"></hr>
       <% } %>
     <% } %>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-<!-- <a href="/urls"> <button type="submit"> database </button> </a>
-<a href="/urls/new"> <button type="submit"> new link </button> </a> -->

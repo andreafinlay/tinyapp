@@ -3,15 +3,16 @@
 <head>
   <title>TinyApp</title>
 </head>
-<body>
+<body bgcolor="#FCF3FF">
   <header>
     <% include partials/_header %>
   </header>
-  <a href="/urls">View Your Shortened Links</a>
-  <h3>Short URL:  <%= shortURL %> </h3>
-    <p>Full link: <a href="http://localhost:8080/u/<%= shortURL %>">http://localhost:8080/u/<%= shortURL %></a></p>
+  <button><a href="/urls">View Your Shortened Links</a></button>
+  <h2><font face="Courier">Short URL:  <%= shortURL %></font></h2>
+    <h3><font face="Courier">Full link: <a href="http://localhost:8080/u/<%= shortURL %>">http://localhost:8080/u/<%= shortURL %></font></a></h3>
     <form action="/urls/<%= shortURL %>" method="POST">
-      <input id="longURL" type="text" name="longURL" value=" <%= longURL.longURL %>">
+      <label for="longURL"><font face="Courier">Update this URL:</font></label>
+      <input id="longURL" type="text" name="longURL" value="<%=longURL.longURL%>">
       <input type="submit" value="Update">
     </form>
   <%= //express_server.js %>

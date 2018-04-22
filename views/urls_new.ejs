@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head></head>
-  <body style="font-size:20px; padding:50px;">
+  <body bgcolor="#FCF3FF" style="font-size:20px; padding:50px;">
     <header>
     <% include partials/_header %>
     </header>
-    <a href="/urls">View Your Shortened Links</a>
+    <button><a href="/urls">View Your Shortened Links</a></button>
+    <h3><font face="Courier">Create a new short URL</font></h3>
     <form action="/urls" method="POST">
-      <label for="longURL">Enter a URL:</label>
+      <label for="longURL"><font face="Courier">Enter a URL:</font></label>
       <input id="longURL" type="text" name="longURL" placeholder="http://" style="width: 300px">
       <input type="submit" value="Submit">
     </form>
