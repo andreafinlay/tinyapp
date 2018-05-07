@@ -2,9 +2,9 @@
 
 TinyApp is a full stack web application for shortening links, in the vein of [bit.ly](https://bitly.com/). :link:
 
-This app is built with [Node](https://nodejs.org/en/) and [Express](https://expressjs.com/).
-
 TinyApp allows users to convert long URLs to short links, and keeps a user-specific database of shortened links.
+
+This app is built with [Node](https://nodejs.org/en/) and [Express](https://expressjs.com/).
 
 ## Final Product
 
